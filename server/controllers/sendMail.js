@@ -1,17 +1,24 @@
 const AWS = require("aws-sdk");
 const config = require('config');
-const bodyParser = require('body-parser');
+require('dotenv').config();
 
 exports.emailViaAWS_SES = function (req, res) {
-  return new Promise( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      console.log("Aws mail body", req.mailBody);
+      // console.log("Aws mail body", req.mailBody);
+      console.log(config.AWS.accessKeyId);
 
       AWS.config.update({
         accessKeyId: config.AWS.accessKeyId,
         secretAccessKey: config.AWS.secretAccessKey,
         region: config.AWS.region
       });
+
+      // AWS.config.update({
+      //   secretAccessKey: process.env.accessKeyId,
+      //   accessKeyId: process.env.secreteAccessKey,
+      //   region: process.env.region,
+      // });
 
       const ses = new AWS.SES({ apiVersion: "2010-12-01" });
 
@@ -20,7 +27,7 @@ exports.emailViaAWS_SES = function (req, res) {
         Source: "WCE-Connects" + config.AWS.SenderEmailId
       };
 
-      const sendEmailReceiver =  ses.sendEmail(params).promise();
+      const sendEmailReceiver = ses.sendEmail(params).promise();
 
       sendEmailReceiver
         .then(data => {

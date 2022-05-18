@@ -1,10 +1,10 @@
 const XLSX=require('xlsx');
 
-const data = function excelFileTojson (FileName) {
+function excelFileTojson (FileName) {
   const workbook=XLSX.readFile(FileName);
   const sheet_name_list = workbook.SheetNames;
   console.log(sheet_name_list); // getting as Sheet1
-
+  var values=[];
   sheet_name_list.forEach(function (y) {
     const worksheet = workbook.Sheets[y];
     
@@ -38,10 +38,12 @@ const data = function excelFileTojson (FileName) {
     //drop those first two rows which are empty
     data.shift();
     data.shift();
-    console.log(data);            //data will hold the json array
-    return data;                  //return the json array
+                //data will hold the json array
+    if(data.length!=0)
+      values=data;
+
   });
+  return values;
 };
 
-module.exports = data; 
-  
+module.exports = excelFileTojson;

@@ -1,5 +1,4 @@
 //Controller for departmental news
-const express = require('express');
 const jwt = require("jsonwebtoken");
 const mongoose = require('mongoose');
 const newsBody = require('../models/departmentalNews');
