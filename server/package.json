@@ -15,7 +15,11 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "config": "^3.3.7",
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+    "cors": "*",
+>>>>>>> 64494271827e0699409e5511212051eeb6fcda62
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
