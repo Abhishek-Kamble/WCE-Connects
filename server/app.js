@@ -12,8 +12,40 @@ mongoose = require('mongoose'),
     adminRoutes = require('./routes/admin'),
     eventRoutes = require('./routes/events');
 
-require("dotenv").config()
+require('dotenv').config();
 
+//TODO Router for checking mails
+// app.use('/sendmail', sendMail);
+
+
+// ## To be moved to middlewares
+const corsOptions = {
+    origin: '*',
+    credentials: true,            //access-control-allow-credentials:true
+};
+app.use(cors(corsOptions));
+app.use(express.json());
+
+// Quick fix for: No 'Access-Control-Allow-Origin' header is present on the requested resource error
+//## To be moved to middlewares
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    //res.setHeader('Access-Control-Allow-Origin', 'https://www.alumni.wce.ac.in');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 const mailList = require('./routes/mailList');
 
 //Departmental news section
@@ -36,41 +68,7 @@ app.use('/maillist', mailList);
 app.use('/events', eventRoutes);
 
 // Using environment variables (Config) for AWS SES Credentials...
-require('dotenv').config();
 
-//TODO Router for checking mails
-// app.use('/sendmail', sendMail);
-
-
-// ## To be moved to middlewares
-const corsOptions = {
-    origin: '*',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-app.use(express.json());
-
-// Quick fix for: No 'Access-Control-Allow-Origin' header is present on the requested resource error
-//## To be moved to middlewares
-// app.use(function (req, res, next) {
-
-//     // Website you wish to allow to connect
-//     //res.setHeader('Access-Control-Allow-Origin', 'https://www.alumni.wce.ac.in');
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//     // Set to true if you need the website to include cookies in the requests sent
-//     // to the API (e.g. in case you use sessions)
-//     res.setHeader('Access-Control-Allow-Credentials', true);
-
-//     // Pass to next layer of middleware
-//     next();
-// });
 
 
 
@@ -194,7 +192,7 @@ app.get('/', function (req, res) {
 
 // Importing routing modules
 // Without authentication
-app.use('/auth', authRoutes);
+// app.use('/auth', authRoutes);
 
 // With authentication
 // app.use(auth);
