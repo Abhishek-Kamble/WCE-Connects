@@ -17,7 +17,6 @@ require('dotenv').config();
 //TODO Router for checking mails
 // app.use('/sendmail', sendMail);
 
-
 // ## To be moved to middlewares
 const corsOptions = {
     origin: '*',

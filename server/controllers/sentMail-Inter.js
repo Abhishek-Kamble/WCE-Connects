@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const config = require('config');
 require('dotenv').config();
 
-exports.emailViaAWS_SES = function (req, res) {
+exports.emailViaAWS_SES = function (mailBody) {
   return new Promise(async (resolve, reject) => {
     try {
       AWS.config.update({
@@ -14,7 +14,7 @@ exports.emailViaAWS_SES = function (req, res) {
       const ses = new AWS.SES({ apiVersion: "2010-12-01" });
 
       const params = {
-        ...req.mailBody,
+        mailBody,
         Source: "'WCE-Connects' <" + config.AWS.SenderEmailId + ">'"
       };
 
