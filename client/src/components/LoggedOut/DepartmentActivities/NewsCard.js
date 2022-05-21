@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
    border:"1px solid lightgrey"
   },
 }));
-export const NewsCard = () => {
+export const NewsCard = ({deptData}) => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false)
     return (
@@ -22,31 +22,26 @@ export const NewsCard = () => {
         <CardActionArea>
             <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-                Graduation day
+                {deptData.title}
             </Typography>
             {
                 isOpen?(
                     <>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
+                        <Typography variant="body2" color="textSecondary" component="p" style={{whiteSpace:'pre-line'}}>
+                            {deptData.description}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'left'}}>
+                        <Typography variant="body2" color="textSecondary" component="p" style={{textAlign:'left'}} >
                            
                                 
                                
                                 <strong>
-                                    Contcts : person
+                                    Date:{deptData.dates}
                                 <br/>
-                                Mobile Ni: s
+                                    Contact :  {deptData.contactPerson}
                                 <br/>
-                                     email: aa
+                                Mobile No:  {deptData.contactNumber}
+                                <br/>
+                                     Email:  {deptData.contactEmail} 
                                 </strong>
                            
                             
@@ -55,7 +50,7 @@ export const NewsCard = () => {
                 ):(
                     <>
                         <Typography variant="body2" color="textSecondary" component="p" style={{whiteSpace:'pre-line'}}>
-                           {"Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging\n\n\n\nacross all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000 species, ranging\nacross all continents except Antarctica"}
+                            {deptData.description}
                         </Typography>
                     </>
                 )

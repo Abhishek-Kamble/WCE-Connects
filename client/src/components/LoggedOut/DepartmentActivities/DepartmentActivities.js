@@ -44,22 +44,22 @@ const useStyles = makeStyles((theme) => ({
 
 const departmentlist =[
     {
-        name:'CSE',
+        name:'cse',
     },
     {
-        name:'IT',
+        name:'it',
     },
     {
-        name:'Electronics',
+        name:'electronics',
     },
      {
-        name:'Electrical',
+        name:'electrical',
     },
     {
-        name:'MECH',
+        name:'mech',
     },
     {
-        name:'Civil',
+        name:'civil',
     }
 ]
 
@@ -72,8 +72,8 @@ export const DepartmentActivities = () => {
     useEffect(() => {
         const getData = async () => {
             await axios.get("http://localhost:5000/news/").then((response)=>{
-                if(response.data[0]){
-                    //setAllData(response.data[0]); 
+                if(response.data){
+                    setDepartmentDataList(response.data); 
                     console.log(response)
                 } else {
                     
@@ -91,7 +91,7 @@ export const DepartmentActivities = () => {
     
     useEffect(() => {
 
-    }, [isLoading])
+    }, [isLoading,dept])
     
 
     const handleChange = (event) => {
@@ -130,22 +130,16 @@ export const DepartmentActivities = () => {
             <div className={classes.root}>
                 <Grid container spacing={3}>
                     {
-                        departmentDataList && departmentDataList.map((deptData,ind)=>{
-                            <>
-                                {
-                                    deptData.dept==departmentlist[dept]?(
-                                        <>
-                                            <Grid item xs={12} sm={6} lg={4}>
-                                                <NewsCard/>
-                                            </Grid>
-                                        </>
-                                    ):(null)
-                                }
-                            </>
-                        })
+                        departmentDataList && departmentDataList.filter((deptData)=> {return deptData.department===departmentlist[dept].name}).map((deptData,ind)=><Grid item xs={12} sm={6} lg={4}>
+                                        {console.log(deptData)}
+                                        <NewsCard deptData={deptData}/>
+                                    </Grid>)
                     }
                     
-                    <Grid item xs={12} sm={6} lg={4}>
+                    {/* <Grid item xs={12} sm={6} lg={4}>
+                        <NewsCard/>
+                    </Grid> */}
+                    {/* <Grid item xs={12} sm={6} lg={4}>
                         <NewsCard/>
                     </Grid>
                     <Grid item xs={12} sm={6} lg={4}>
@@ -159,10 +153,7 @@ export const DepartmentActivities = () => {
                     </Grid>
                     <Grid item xs={12} sm={6} lg={4}>
                         <NewsCard/>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid>
+                    </Grid> */}
                    
                    
                     
