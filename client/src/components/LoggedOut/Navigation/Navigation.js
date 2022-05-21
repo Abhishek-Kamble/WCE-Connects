@@ -153,16 +153,16 @@ export default function Navigation() {
                     </ListItemIcon>
                     <Typography variant="h6"> Gallery </Typography>
                   </MenuItem>
-                  {/* <MenuItem
+                  <MenuItem
                     onClick={() => setAnchor(null)}
                     component={Link}
-                    to="/gallery"
+                    to="/departmentactivities"
                   >
                     <ListItemIcon>
                       <ImageIcon />
                     </ListItemIcon>
-                    <Typography variant="h6"> Gallery </Typography>
-                  </MenuItem> */}
+                    <Typography variant="h6"> Department Activities </Typography>
+                  </MenuItem>
                   <MenuItem
                     onClick={() => setAnchor(null)}
                     component={Link}
@@ -230,13 +230,13 @@ export default function Navigation() {
                       </Button>
                     </Link>
                 </div>
-                {/* <div>
+                <div>
                     <Link to="/departmentactivities" style={{textDecoration:"none"}}>
                       <Button className={activeNav.startsWith('/departmentactivities') ? classes.active : classes.navitem}>
                         <Typography variant="subtitle2" className={classes.navitem}>Department Activities</Typography>
                       </Button>
                     </Link>
-                </div> */}
+                </div>
                 <div>
                   <Link to="/gallery" style={{textDecoration:"none"}}>
                     <Button  className={activeNav.startsWith('/gallery') ? classes.active : classes.navitem}>
