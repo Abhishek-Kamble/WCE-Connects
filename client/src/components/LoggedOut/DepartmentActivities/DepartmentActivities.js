@@ -18,6 +18,7 @@ import { NewsCard } from './NewsCard';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom:'5%'
   },
    paper: {
     marginTop:"7%",
@@ -109,7 +110,7 @@ export const DepartmentActivities = () => {
                     </h3>
                     <div style={{alignContent:'center',textAlign:'center'}}>
                         <FormControl variant="filled" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-filled-label">Department {departmentlist[dept].name}</InputLabel>
+                        <InputLabel id="demo-simple-select-filled-label">Department</InputLabel>
                         <Select
                         labelId="demo-simple-select-filled-label"
                         id="demo-simple-select-filled"
@@ -127,7 +128,7 @@ export const DepartmentActivities = () => {
             </div>
                     
 
-            <div className={classes.root}>
+            <div className={classes.root} >
                 <Grid container spacing={3}>
                     {
                         departmentDataList && departmentDataList.filter((deptData)=> {return deptData.department===departmentlist[dept].name}).map((deptData,ind)=><Grid item xs={12} sm={6} lg={4}>
@@ -136,24 +137,7 @@ export const DepartmentActivities = () => {
                                     </Grid>)
                     }
                     
-                    {/* <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid> */}
-                    {/* <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid>
-                    <Grid item xs={12} sm={6} lg={4}>
-                        <NewsCard/>
-                    </Grid> */}
+                    
                    
                    
                     
