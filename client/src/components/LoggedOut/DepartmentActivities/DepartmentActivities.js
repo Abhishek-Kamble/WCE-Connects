@@ -51,17 +51,10 @@ const departmentlist =[
         name:'it',
     },
     {
-<<<<<<< HEAD
         name:'electronics',
     },
      {
         name:'electrical',
-=======
-        name:'ele',
-    },
-     {
-        name:'eln',
->>>>>>> 1d9fe2f63b83c462333258ef3ae27b661c6b66c7
     },
     {
         name:'mech',
