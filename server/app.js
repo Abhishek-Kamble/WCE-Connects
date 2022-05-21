@@ -28,8 +28,6 @@ app.use(express.json());
 // Quick fix for: No 'Access-Control-Allow-Origin' header is present on the requested resource error
 //## To be moved to middlewares
 app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
     //res.setHeader('Access-Control-Allow-Origin', 'https://www.alumni.wce.ac.in');
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     // Request methods you wish to allow
