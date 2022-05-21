@@ -13,8 +13,10 @@ exports.emailViaAWS_SES = function (mailBody) {
 
       const ses = new AWS.SES({ apiVersion: "2010-12-01" });
 
+      // console.log("MailBody here", mailBody);
+
       const params = {
-        mailBody,
+        ...mailBody,
         Source: "'WCE-Connects' <" + config.AWS.SenderEmailId + ">'"
       };
 

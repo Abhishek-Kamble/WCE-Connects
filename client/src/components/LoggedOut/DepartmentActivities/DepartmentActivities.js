@@ -44,22 +44,22 @@ const useStyles = makeStyles((theme) => ({
 
 const departmentlist =[
     {
-        name:'CSE',
+        name:'cse',
     },
     {
-        name:'IT',
+        name:'it',
     },
     {
-        name:'Electronics',
+        name:'ele',
     },
      {
-        name:'Electrical',
+        name:'eln',
     },
     {
-        name:'MECH',
+        name:'mech',
     },
     {
-        name:'Civil',
+        name:'civil',
     }
 ]
 
